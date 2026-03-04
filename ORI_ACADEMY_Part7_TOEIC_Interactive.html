@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORI ACADEMY – Tư Duy & Mẹo Part 7 TOEIC</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ori-dark: #f8faf9;
+  --ori-navy: #ffffff;
+  --ori-blue: #16a34a;
+  --ori-cyan: #15803d;
+  --ori-emerald: #22c55e;
+  --ori-amber: #ea580c;
+  --ori-rose: #dc2626;
+  --ori-purple: #7c3aed;
+  --ori-white: #1a1a2e;
+  --ori-gray: #64748b;
+  --ori-card: rgba(255,255,255,0.85);
+  --glow-blue: 0 4px 24px rgba(22,163,74,0.12);
+  --glow-cyan: 0 4px 24px rgba(21,128,61,0.12);
+  --glow-emerald: 0 4px 24px rgba(34,197,94,0.12);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Be Vietnam Pro', sans-serif;
+  background: var(--ori-dark);
+  color: var(--ori-white);
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+
+/* === ANIMATED BG === */
+.bg-grid {
+  position: fixed; inset:0; z-index:0;
+  background-image:
+    linear-gradient(rgba(22,163,74,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(22,163,74,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.bg-orbs {
+  position:fixed; inset:0; z-index:0; pointer-events:none;
+}
+.bg-orbs::before, .bg-orbs::after {
+  content:''; position:absolute; border-radius:50%; filter:blur(140px); opacity:0.08;
+}
+.bg-orbs::before {
+  width:600px; height:600px; background:#22c55e; top:-200px; right:-100px;
+  animation: orbFloat 20s ease-in-out infinite;
+}
+.bg-orbs::after {
+  width:500px; height:500px; background:#16a34a; bottom:-150px; left:-100px;
+  animation: orbFloat 25s ease-in-out infinite reverse;
+}
+@keyframes orbFloat {
+  0%,100% { transform:translate(0,0); }
+  33% { transform:translate(50px,30px); }
+  66% { transform:translate(-30px,-20px); }
+}
+
+/* === NAV === */
+.nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  padding:16px 40px;
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(22,163,74,0.1);
+  display:flex; justify-content:space-between; align-items:center;
+}
+.nav-brand {
+  font-size:1.4rem; font-weight:800; letter-spacing:-0.5px;
+  background:linear-gradient(135deg, #16a34a, #15803d);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+}
+.nav-brand span { font-weight:400; opacity:0.7; -webkit-text-fill-color:var(--ori-gray); font-size:0.85rem; margin-left:8px;}
+.nav-links { display:flex; gap:8px; }
+.nav-links button {
+  background:none; border:1px solid rgba(0,0,0,0.08); color:var(--ori-gray);
+  padding:8px 16px; border-radius:8px; cursor:pointer; font-family:inherit; font-size:0.8rem;
+  transition:all 0.3s;
+}
+.nav-links button:hover, .nav-links button.active {
+  border-color:var(--ori-cyan); color:#fff; background:var(--ori-cyan);
+}
+
+/* === MAIN CONTENT === */
+main { position:relative; z-index:1; padding-top:80px; }
+
+.section {
+  display:none; padding:40px 20px; max-width:1100px; margin:0 auto;
+  animation: fadeSlide 0.5s ease;
+}
+.section.active { display:block; }
+
+@keyframes fadeSlide {
+  from { opacity:0; transform:translateY(20px); }
+  to { opacity:1; transform:translateY(0); }
+}
+
+/* === HERO === */
+.hero {
+  text-align:center; padding:60px 20px 40px;
+}
+.hero-badge {
+  display:inline-block; padding:6px 18px; border-radius:50px;
+  background:rgba(22,163,74,0.08); border:1px solid rgba(22,163,74,0.2);
+  font-size:0.75rem; color:var(--ori-cyan); font-weight:600; letter-spacing:1px;
+  text-transform:uppercase; margin-bottom:24px;
+}
+.hero h1 {
+  font-size:clamp(2rem,5vw,3.5rem); font-weight:900; line-height:1.1; margin-bottom:16px;
+  letter-spacing:-1px;
+}
+.hero h1 .gradient {
+  background:linear-gradient(135deg, #16a34a, #15803d, #166534);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+}
+.hero p { color:var(--ori-gray); font-size:1.05rem; max-width:600px; margin:0 auto 32px; }
+
+/* Stats row */
+.stats-row {
+  display:flex; justify-content:center; gap:40px; margin-bottom:40px; flex-wrap:wrap;
+}
+.stat-item { text-align:center; }
+.stat-num {
+  font-size:2rem; font-weight:800;
+  background:linear-gradient(135deg, #16a34a, #15803d);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+}
+.stat-label { font-size:0.75rem; color:var(--ori-gray); text-transform:uppercase; letter-spacing:1px; }
+
+/* === CARDS === */
+.card {
+  background: var(--ori-card);
+  border:1px solid rgba(0,0,0,0.06);
+  border-radius:16px; padding:32px;
+  margin-bottom:24px;
+  backdrop-filter:blur(10px);
+  transition: all 0.3s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.card:hover {
+  border-color:rgba(22,163,74,0.2);
+  box-shadow: var(--glow-cyan);
+  transform:translateY(-2px);
+}
+.card-header {
+  display:flex; align-items:center; gap:14px; margin-bottom:20px;
+}
+.card-icon {
+  width:48px; height:48px; border-radius:12px; display:flex; align-items:center; justify-content:center;
+  font-size:1.4rem; flex-shrink:0;
+}
+.card-icon.blue { background:rgba(37,99,235,0.15); }
+.card-icon.cyan { background:rgba(6,182,212,0.15); }
+.card-icon.emerald { background:rgba(16,185,129,0.15); }
+.card-icon.amber { background:rgba(245,158,11,0.15); }
+.card-icon.rose { background:rgba(244,63,94,0.15); }
+.card-icon.purple { background:rgba(139,92,246,0.15); }
+
+.card h3 { font-size:1.2rem; font-weight:700; }
+.card h3 small { font-weight:400; color:var(--ori-gray); font-size:0.8rem; display:block; margin-top:2px;}
+
+/* === STEP FLOW === */
+.step-flow {
+  display:flex; gap:16px; margin:32px 0; flex-wrap:wrap; justify-content:center;
+}
+.step-box {
+  flex:1; min-width:220px; max-width:320px; padding:24px;
+  background:rgba(255,255,255,0.7); border:1px solid rgba(0,0,0,0.06);
+  border-radius:14px; text-align:center; position:relative;
+  transition:all 0.3s; box-shadow:0 1px 3px rgba(0,0,0,0.04);
+}
+.step-box:hover { border-color:var(--ori-cyan); transform:translateY(-4px); box-shadow:var(--glow-cyan); }
+.step-num {
+  font-size:2.5rem; font-weight:900; opacity:0.1; position:absolute; top:10px; left:18px;
+}
+.step-box h4 { font-size:1rem; font-weight:700; margin:8px 0; color:var(--ori-cyan); }
+.step-box p { font-size:0.85rem; color:var(--ori-gray); }
+
+/* === TYPE TABLE === */
+.type-grid {
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:16px; margin:24px 0;
+}
+.type-card {
+  padding:24px; border-radius:14px; border:1px solid rgba(0,0,0,0.06);
+  background:rgba(255,255,255,0.7); position:relative; overflow:hidden;
+  cursor:pointer; transition:all 0.4s; box-shadow:0 1px 3px rgba(0,0,0,0.04);
+}
+.type-card:hover { transform:translateY(-4px); }
+.type-card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:3px;
+}
+.type-card.t1::before { background:linear-gradient(90deg,var(--ori-emerald),var(--ori-cyan)); }
+.type-card.t1:hover { border-color:var(--ori-emerald); box-shadow:var(--glow-emerald); }
+.type-card.t2::before { background:linear-gradient(90deg,var(--ori-blue),var(--ori-cyan)); }
+.type-card.t2:hover { border-color:var(--ori-blue); box-shadow:var(--glow-blue); }
+.type-card.t3::before { background:linear-gradient(90deg,var(--ori-amber),var(--ori-rose)); }
+.type-card.t3:hover { border-color:var(--ori-amber); }
+.type-card.t4::before { background:linear-gradient(90deg,var(--ori-rose),var(--ori-purple)); }
+.type-card.t4:hover { border-color:var(--ori-rose); }
+.type-percent {
+  font-size:2rem; font-weight:900; opacity:0.25; position:absolute; top:12px; right:16px;
+}
+.type-card h4 { font-size:1rem; font-weight:700; margin-bottom:6px; }
+.type-card p { font-size:0.82rem; color:var(--ori-gray); }
+
+/* === QUESTION TYPES DETAIL === */
+.q-table {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin:24px 0;
+}
+@media(max-width:768px){ .q-table{grid-template-columns:1fr;} }
+.q-col {
+  padding:24px; border-radius:14px; border:1px solid rgba(0,0,0,0.06);
+  background:rgba(255,255,255,0.7); box-shadow:0 1px 3px rgba(0,0,0,0.04);
+}
+.q-col h4 {
+  font-size:0.95rem; font-weight:700; margin-bottom:12px; padding-bottom:10px;
+  border-bottom:1px solid rgba(0,0,0,0.06);
+}
+.q-col .tag {
+  display:inline-block; padding:3px 10px; border-radius:6px; font-size:0.7rem;
+  margin:3px 4px 3px 0; font-weight:500;
+}
+.q-col .method {
+  margin-top:14px; padding:14px; border-radius:10px;
+  background:rgba(22,163,74,0.06); border:1px solid rgba(22,163,74,0.15);
+  font-size:0.82rem; color:var(--ori-cyan);
+}
+.q-col .method strong { display:block; margin-bottom:4px; font-size:0.75rem; text-transform:uppercase; letter-spacing:1px; }
+
+/* === PRACTICE SECTION === */
+.practice-container {
+  max-width:900px; margin:0 auto;
+}
+.passage-box {
+  background:rgba(255,255,255,0.8); border:1px solid rgba(0,0,0,0.08);
+  border-radius:16px; padding:28px; margin-bottom:24px; position:relative;
+  box-shadow:0 1px 3px rgba(0,0,0,0.04);
+}
+.passage-box .label {
+  position:absolute; top:-12px; left:20px; background:var(--ori-blue); color:#fff;
+  padding:4px 14px; border-radius:8px; font-size:0.7rem; font-weight:700;
+  text-transform:uppercase; letter-spacing:1px;
+}
+.passage-text {
+  font-size:0.9rem; line-height:1.9; color:#334155;
+}
+.passage-text .highlight-word {
+  background:rgba(234,88,12,0.1); color:var(--ori-amber);
+  padding:1px 4px; border-radius:4px; cursor:pointer; transition:all 0.2s;
+}
+.passage-text .highlight-word:hover { background:rgba(234,88,12,0.2); }
+
+.question-card {
+  background:var(--ori-card); border:1px solid rgba(0,0,0,0.06);
+  border-radius:14px; padding:24px; margin-bottom:16px;
+  transition:all 0.3s; box-shadow:0 1px 3px rgba(0,0,0,0.04);
+}
+.question-card.answered-correct {
+  border-color:var(--ori-emerald); box-shadow:0 0 20px rgba(16,185,129,0.15);
+}
+.question-card.answered-wrong {
+  border-color:var(--ori-rose); box-shadow:0 0 20px rgba(244,63,94,0.15);
+}
+.q-badge {
+  display:inline-block; padding:3px 10px; border-radius:6px; font-size:0.65rem;
+  font-weight:600; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:10px;
+}
+.q-badge.tq { background:rgba(37,99,235,0.15); color:var(--ori-blue); }
+.q-badge.ct { background:rgba(6,182,212,0.15); color:var(--ori-cyan); }
+.q-badge.db { background:rgba(244,63,94,0.15); color:var(--ori-rose); }
+.q-number { font-weight:700; font-size:0.95rem; margin-bottom:12px; }
+.choices { display:flex; flex-direction:column; gap:8px; }
+.choice-btn {
+  display:flex; align-items:center; gap:12px; padding:14px 18px;
+  background:rgba(0,0,0,0.02); border:1px solid rgba(0,0,0,0.08);
+  border-radius:10px; cursor:pointer; font-family:inherit; font-size:0.88rem;
+  color:var(--ori-white); text-align:left; transition:all 0.2s; width:100%;
+}
+.choice-btn:hover:not(.disabled) {
+  border-color:var(--ori-cyan); background:rgba(22,163,74,0.05);
+}
+.choice-btn .letter {
+  width:32px; height:32px; border-radius:8px; display:flex; align-items:center;
+  justify-content:center; font-weight:700; font-size:0.85rem; flex-shrink:0;
+  background:rgba(0,0,0,0.03); border:1px solid rgba(0,0,0,0.08);
+  transition:all 0.2s;
+}
+.choice-btn.selected .letter {
+  background:var(--ori-blue); border-color:var(--ori-blue); color:#fff;
+}
+.choice-btn.correct .letter {
+  background:var(--ori-emerald); border-color:var(--ori-emerald); color:#fff;
+}
+.choice-btn.wrong .letter {
+  background:var(--ori-rose); border-color:var(--ori-rose); color:#fff;
+}
+.choice-btn.disabled { pointer-events:none; opacity:0.7; }
+.choice-btn.correct { border-color:var(--ori-emerald); background:rgba(16,185,129,0.06); }
+.choice-btn.wrong { border-color:var(--ori-rose); background:rgba(244,63,94,0.06); }
+
+.explain-box {
+  margin-top:14px; padding:18px; border-radius:12px;
+  background:rgba(22,163,74,0.05); border:1px solid rgba(22,163,74,0.15);
+  font-size:0.85rem; display:none;
+  animation: fadeSlide 0.4s ease;
+}
+.explain-box.show { display:block; }
+.explain-box strong { color:var(--ori-cyan); }
+
+/* === TIMER === */
+.timer-bar {
+  display:flex; align-items:center; gap:14px; margin-bottom:24px;
+  padding:16px 20px; border-radius:12px;
+  background:rgba(255,255,255,0.8); border:1px solid rgba(0,0,0,0.06);
+  box-shadow:0 1px 3px rgba(0,0,0,0.04);
+}
+.timer-display {
+  font-family:'JetBrains Mono',monospace; font-size:1.8rem; font-weight:700;
+  color:var(--ori-amber);
+}
+.timer-label { font-size:0.8rem; color:var(--ori-gray); }
+.timer-btn {
+  margin-left:auto; padding:8px 20px; border-radius:8px; border:none;
+  font-family:inherit; font-weight:600; cursor:pointer; font-size:0.85rem;
+  transition:all 0.2s;
+}
+.timer-btn.start { background:var(--ori-blue); color:#fff; }
+.timer-btn.start:hover { background:#3b82f6; }
+.timer-btn.reset { background:rgba(0,0,0,0.04); color:var(--ori-gray); border:1px solid rgba(0,0,0,0.08); }
+
+/* === SCORE PANEL === */
+.score-panel {
+  display:flex; gap:16px; margin:24px 0; flex-wrap:wrap;
+}
+.score-item {
+  flex:1; min-width:140px; padding:20px; text-align:center;
+  border-radius:12px; border:1px solid rgba(0,0,0,0.06);
+  background:rgba(255,255,255,0.7); box-shadow:0 1px 3px rgba(0,0,0,0.04);
+}
+.score-item .num { font-size:2rem; font-weight:800; }
+.score-item .label { font-size:0.75rem; color:var(--ori-gray); text-transform:uppercase; letter-spacing:1px; }
+.score-item.correct .num { color:var(--ori-emerald); }
+.score-item.wrong .num { color:var(--ori-rose); }
+.score-item.total .num { color:var(--ori-cyan); }
+.score-item.time .num { color:var(--ori-amber); font-family:'JetBrains Mono',monospace; font-size:1.5rem;}
+
+/* === PRACTICE SELECTOR === */
+.practice-tabs {
+  display:flex; gap:8px; margin-bottom:24px; flex-wrap:wrap;
+}
+.practice-tab {
+  padding:10px 20px; border-radius:10px; border:1px solid rgba(0,0,0,0.08);
+  background:rgba(255,255,255,0.7); cursor:pointer; font-family:inherit;
+  font-size:0.85rem; color:var(--ori-gray); font-weight:500; transition:all 0.3s;
+}
+.practice-tab:hover { border-color:var(--ori-cyan); color:var(--ori-cyan); }
+.practice-tab.active {
+  background:var(--ori-blue); border-color:var(--ori-blue);
+  color:#fff; font-weight:600;
+}
+
+/* === FOOTER === */
+.footer {
+  text-align:center; padding:40px 20px; margin-top:40px;
+  border-top:1px solid rgba(0,0,0,0.06);
+}
+.footer p { font-size:0.8rem; color:var(--ori-gray); }
+.footer .brand { color:var(--ori-cyan); font-weight:700; }
+
+/* === RESPONSIVE === */
+@media(max-width:640px){
+  .nav { padding:12px 16px; }
+  .nav-links button { padding:6px 10px; font-size:0.7rem; }
+  .hero h1 { font-size:1.8rem; }
+  .step-flow { flex-direction:column; }
+  .stats-row { gap:20px; }
+}
+
+/* === PROGRESS DOTS === */
+.progress-dots {
+  display:flex; gap:6px; justify-content:center; margin:20px 0;
+}
+.dot {
+  width:10px; height:10px; border-radius:50%;
+  background:rgba(0,0,0,0.08); border:1px solid rgba(0,0,0,0.12);
+  transition:all 0.3s;
+}
+.dot.current { background:var(--ori-blue); border-color:var(--ori-blue); transform:scale(1.3); }
+.dot.done-correct { background:var(--ori-emerald); border-color:var(--ori-emerald); }
+.dot.done-wrong { background:var(--ori-rose); border-color:var(--ori-rose); }
+
+/* === TOOLTIP === */
+.tip-box {
+  margin:16px 0; padding:16px 20px; border-radius:12px;
+  background:rgba(234,88,12,0.05); border-left:3px solid var(--ori-amber);
+  font-size:0.85rem; color:#334155;
+}
+.tip-box strong { color:var(--ori-amber); }
+
+/* Scroll indicator */
+.section-title {
+  font-size:1.6rem; font-weight:800; margin-bottom:8px; letter-spacing:-0.5px;
+}
+.section-subtitle {
+  color:var(--ori-gray); font-size:0.9rem; margin-bottom:32px;
+}
+</style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="bg-orbs"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-brand">ORI ACADEMY <span>Part 7 Mastery</span></div>
+  <div class="nav-links">
+    <button class="active" onclick="showSection('home')">Tổng Quan</button>
+    <button onclick="showSection('strategy')">Chiến Thuật</button>
+    <button onclick="showSection('types')">4 Dạng Đáp Án</button>
+    <button onclick="showSection('practice')">Luyện Tập</button>
+  </div>
+</nav>
+
+<main>
+
+<!-- ======== HOME ======== -->
+<section id="home" class="section active">
+  <div class="hero">
+    <div class="hero-badge">🎯 Có TOEIC, Có Việc Làm Cùng ORI</div>
+    <h1>Tư Duy & Mẹo<br><span class="gradient">Part 7 TOEIC</span></h1>
+    <p>Chinh phục 54 câu Reading Part 7 trong 52 phút với chiến thuật đọc thông minh từ ORI Academy</p>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-item">
+      <div class="stat-num">54</div>
+      <div class="stat-label">Câu hỏi</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">52'</div>
+      <div class="stat-label">Phút</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Dạng câu hỏi</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Dạng đáp án</div>
+    </div>
+  </div>
+
+  <!-- 3 STEPS -->
+  <h2 class="section-title" style="text-align:center;">3 Bước Làm Part 7</h2>
+  <p class="section-subtitle" style="text-align:center;">Quy trình phản xạ giúp bạn tiết kiệm thời gian tối đa</p>
+
+  <div class="step-flow">
+    <div class="step-box">
+      <div class="step-num">01</div>
+      <h4>Dịch Câu Hỏi</h4>
+      <p>Đọc câu hỏi trước, dịch nghĩa và <strong>phân loại</strong> thuộc dạng nào: Tổng quát, Chi tiết hay Đặc biệt</p>
+    </div>
+    <div class="step-box">
+      <div class="step-num">02</div>
+      <h4>Đọc Theo Dạng</h4>
+      <p>Tuỳ từng dạng câu hỏi mà áp dụng <strong>cách đọc khác nhau</strong> — không đọc hết bài!</p>
+    </div>
+    <div class="step-box">
+      <div class="step-num">03</div>
+      <h4>Chọn Đáp Án</h4>
+      <p>Đối chiếu thông tin và chọn đáp án đúng theo 4 dạng: Y hệt, Đồng nghĩa, Diễn tả khác, Loại suy</p>
+    </div>
+  </div>
+
+  <div class="tip-box">
+    <strong>💡 Mẹo phân bổ thời gian ORI:</strong> Part 5: 15 phút → Part 6: 8 phút → Part 7: 52 phút. Luôn làm Part 5 & 6 trước để dành thời gian tối đa cho Part 7!
+  </div>
+</section>
+
+<!-- ======== STRATEGY ======== -->
+<section id="strategy" class="section">
+  <h2 class="section-title">3 Dạng Câu Hỏi Part 7</h2>
+  <p class="section-subtitle">Phân loại câu hỏi trước khi đọc bài — bí quyết tiết kiệm thời gian</p>
+
+  <div class="q-table">
+    <!-- TỔNG QUÁT -->
+    <div class="q-col" style="border-top:3px solid var(--ori-blue);">
+      <h4 style="color:var(--ori-blue);">🔭 Tổng Quát</h4>
+      <p style="font-size:0.82rem;color:var(--ori-gray);margin-bottom:12px;">Hỏi ý chính, mục đích của bài đọc</p>
+      <span class="tag" style="background:rgba(37,99,235,0.12);color:var(--ori-blue);">What is the purpose...?</span>
+      <span class="tag" style="background:rgba(37,99,235,0.12);color:var(--ori-blue);">Main topic</span>
+      <span class="tag" style="background:rgba(37,99,235,0.12);color:var(--ori-blue);">What is being advertised?</span>
+      <span class="tag" style="background:rgba(37,99,235,0.12);color:var(--ori-blue);">What...position?</span>
+      <span class="tag" style="background:rgba(37,99,235,0.12);color:var(--ori-blue);">What kind of business?</span>
+      <span class="tag" style="background:rgba(37,99,235,0.12);color:var(--ori-blue);">Why send/write...?</span>
+      <span class="tag" style="background:rgba(37,99,235,0.12);color:var(--ori-blue);">...talk about...?</span>
+      <div class="method">
+        <strong>🎯 Cách làm</strong>
+        Scan các <strong>Verb, Noun, Adj, Adv</strong> và giới từ trong bài để nắm tổng quát. Đọc từng đoạn → scan qua đáp án. Nếu chưa có → đọc tiếp.
+      </div>
+    </div>
+
+    <!-- CHI TIẾT -->
+    <div class="q-col" style="border-top:3px solid var(--ori-cyan);">
+      <h4 style="color:var(--ori-cyan);">🔍 Chi Tiết</h4>
+      <p style="font-size:0.82rem;color:var(--ori-gray);margin-bottom:12px;">Hỏi các vấn đề nhỏ, cụ thể trong bài</p>
+      <span class="tag" style="background:rgba(6,182,212,0.12);color:var(--ori-cyan);">Where...?</span>
+      <span class="tag" style="background:rgba(6,182,212,0.12);color:var(--ori-cyan);">When...?</span>
+      <span class="tag" style="background:rgba(6,182,212,0.12);color:var(--ori-cyan);">How often...?</span>
+      <span class="tag" style="background:rgba(6,182,212,0.12);color:var(--ori-cyan);">Nhắc đến danh từ riêng</span>
+      <span class="tag" style="background:rgba(6,182,212,0.12);color:var(--ori-cyan);">Ngày tháng cụ thể</span>
+      <span class="tag" style="background:rgba(6,182,212,0.12);color:var(--ori-cyan);">Địa điểm cụ thể</span>
+      <div class="method">
+        <strong>🎯 Cách làm</strong>
+        Dựa vào <strong>từ khoá y hệt</strong> hoặc <strong>từ đồng nghĩa</strong> trong câu hỏi để KHOANH VÙNG CẦN ĐỌC → tiết kiệm thời gian!
+      </div>
+    </div>
+
+    <!-- ĐẶC BIỆT -->
+    <div class="q-col" style="border-top:3px solid var(--ori-rose);">
+      <h4 style="color:var(--ori-rose);">⚡ Đặc Biệt</h4>
+      <p style="font-size:0.82rem;color:var(--ori-gray);margin-bottom:12px;">Câu suy luận, đối chiếu thông tin</p>
+      <span class="tag" style="background:rgba(244,63,94,0.12);color:var(--ori-rose);">NOT / TRUE</span>
+      <span class="tag" style="background:rgba(244,63,94,0.12);color:var(--ori-rose);">...inferred</span>
+      <span class="tag" style="background:rgba(244,63,94,0.12);color:var(--ori-rose);">...implied</span>
+      <span class="tag" style="background:rgba(244,63,94,0.12);color:var(--ori-rose);">...suggested</span>
+      <span class="tag" style="background:rgba(244,63,94,0.12);color:var(--ori-rose);">...indicated</span>
+      <span class="tag" style="background:rgba(244,63,94,0.12);color:var(--ori-rose);">...mentioned</span>
+      <span class="tag" style="background:rgba(244,63,94,0.12);color:var(--ori-rose);">...stated</span>
+      <div class="method">
+        <strong>🎯 Cách làm</strong>
+        Kiểm tra kỹ năng <strong>đối chiếu thông tin</strong>. Lấy từng đáp án SCAN vào bài để lựa chọn → loại từng đáp án sai.
+      </div>
+    </div>
+  </div>
+
+  <div class="tip-box">
+    <strong>💡 Mẹo ORI:</strong> Luôn đọc CÂU HỎI TRƯỚC, phân loại dạng → sau đó mới đọc bài. Đừng bao giờ đọc hết bài rồi mới đọc câu hỏi!
+  </div>
+</section>
+
+<!-- ======== 4 TYPES ======== -->
+<section id="types" class="section">
+  <h2 class="section-title">4 Dạng Đáp Án Part 7</h2>
+  <p class="section-subtitle">Hiểu cách đề TOEIC "giấu" đáp án đúng trong bài đọc</p>
+
+  <div class="type-grid">
+    <div class="type-card t1" onclick="toggleTypeDetail(this)">
+      <div class="type-percent">10%</div>
+      <h4 style="color:var(--ori-emerald);">Dạng 1: Y Hệt</h4>
+      <p>Đáp án đúng dùng <strong>từ y hệt</strong> với bài đọc. Dễ nhất nhưng chỉ chiếm 10%.</p>
+      <div class="type-detail" style="display:none;margin-top:14px;padding-top:14px;border-top:1px solid rgba(0,0,0,0.06);">
+        <p style="font-size:0.82rem;color:var(--ori-cyan);">
+          <strong>Ví dụ:</strong><br>
+          Bài đọc: "The meeting will be held on <strong>Friday</strong>."<br>
+          Câu hỏi: When will the meeting be held?<br>
+          Đáp án: (B) On <strong>Friday</strong> ← từ y hệt!
+        </p>
+      </div>
+    </div>
+
+    <div class="type-card t2" onclick="toggleTypeDetail(this)">
+      <div class="type-percent">20%</div>
+      <h4 style="color:var(--ori-blue);">Dạng 2: Từ Đồng Nghĩa</h4>
+      <p>Đáp án đúng dùng <strong>từ đồng nghĩa</strong> (synonym) so với bài đọc.</p>
+      <div class="type-detail" style="display:none;margin-top:14px;padding-top:14px;border-top:1px solid rgba(0,0,0,0.06);">
+        <p style="font-size:0.82rem;color:var(--ori-cyan);">
+          <strong>Ví dụ:</strong><br>
+          Bài đọc: "We need to <strong>postpone</strong> the event."<br>
+          Câu hỏi: What will happen to the event?<br>
+          Đáp án: (C) It will be <strong>delayed</strong>. ← postpone = delayed
+        </p>
+      </div>
+    </div>
+
+    <div class="type-card t3" onclick="toggleTypeDetail(this)">
+      <div class="type-percent">30%</div>
+      <h4 style="color:var(--ori-amber);">Dạng 3: Diễn Tả Khác</h4>
+      <p>Đáp án đúng <strong>diễn tả cùng ý</strong> nhưng bằng cách nói hoàn toàn khác.</p>
+      <div class="type-detail" style="display:none;margin-top:14px;padding-top:14px;border-top:1px solid rgba(0,0,0,0.06);">
+        <p style="font-size:0.82rem;color:var(--ori-cyan);">
+          <strong>Ví dụ:</strong><br>
+          Bài đọc: "Employees who have been with the company for over 5 years are eligible."<br>
+          Câu hỏi: Who can participate?<br>
+          Đáp án: (A) <strong>Long-term staff members</strong> ← cùng ý, cách nói khác
+        </p>
+      </div>
+    </div>
+
+    <div class="type-card t4" onclick="toggleTypeDetail(this)">
+      <div class="type-percent">40%</div>
+      <h4 style="color:var(--ori-rose);">Dạng 4: Loại Suy</h4>
+      <p>Đáp án đúng <strong>không rõ ràng</strong>, nhưng 3 đáp án còn lại đều SAI. Chiếm 40%!</p>
+      <div class="type-detail" style="display:none;margin-top:14px;padding-top:14px;border-top:1px solid rgba(0,0,0,0.06);">
+        <p style="font-size:0.82rem;color:var(--ori-cyan);">
+          <strong>Mẹo ORI:</strong><br>
+          Khi gặp dạng này, đừng tìm đáp án ĐÚNG → hãy <strong>loại đáp án SAI</strong>!<br>
+          Kiểm tra từng đáp án xem có mâu thuẫn với bài đọc không.<br>
+          Đáp án nào không bị loại → đó là đáp án đúng!
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Chart -->
+  <div class="card" style="text-align:center;">
+    <h3>Tỷ lệ xuất hiện các dạng đáp án</h3>
+    <div id="chartContainer" style="margin-top:20px; display:flex; align-items:flex-end; justify-content:center; gap:24px; height:220px;">
+      <div style="text-align:center;">
+        <div style="width:60px;border-radius:8px 8px 0 0;background:linear-gradient(180deg,var(--ori-emerald),rgba(16,185,129,0.4));height:44px;transition:height 1s;" class="bar" data-target="44"></div>
+        <div style="margin-top:8px;font-size:0.75rem;color:var(--ori-gray);">Y Hệt</div>
+        <div style="font-weight:800;color:var(--ori-emerald);">10%</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:60px;border-radius:8px 8px 0 0;background:linear-gradient(180deg,var(--ori-blue),rgba(37,99,235,0.4));height:88px;transition:height 1s;" class="bar" data-target="88"></div>
+        <div style="margin-top:8px;font-size:0.75rem;color:var(--ori-gray);">Đồng Nghĩa</div>
+        <div style="font-weight:800;color:var(--ori-blue);">20%</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:60px;border-radius:8px 8px 0 0;background:linear-gradient(180deg,var(--ori-amber),rgba(245,158,11,0.4));height:132px;transition:height 1s;" class="bar" data-target="132"></div>
+        <div style="margin-top:8px;font-size:0.75rem;color:var(--ori-gray);">Diễn Tả Khác</div>
+        <div style="font-weight:800;color:var(--ori-amber);">30%</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:60px;border-radius:8px 8px 0 0;background:linear-gradient(180deg,var(--ori-rose),rgba(244,63,94,0.4));height:176px;transition:height 1s;" class="bar" data-target="176"></div>
+        <div style="margin-top:8px;font-size:0.75rem;color:var(--ori-gray);">Loại Suy</div>
+        <div style="font-weight:800;color:var(--ori-rose);">40%</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tip-box">
+    <strong>💡 Bí quyết ORI:</strong> 70% đáp án Part 7 thuộc dạng 3 & 4 (Diễn tả khác + Loại suy). Đừng bao giờ chỉ tìm từ y hệt trong bài! Hãy luyện tập tư duy suy luận và loại suy.
+  </div>
+</section>
+
+<!-- ======== PRACTICE ======== -->
+<section id="practice" class="section">
+  <h2 class="section-title">Luyện Tập Mô Phỏng</h2>
+  <p class="section-subtitle">Thực hành với các bài đọc thực tế — áp dụng 3 bước ORI</p>
+
+  <div class="practice-tabs">
+    <button class="practice-tab active" onclick="loadPractice(0, this)">📧 Email (Bài 1)</button>
+    <button class="practice-tab" onclick="loadPractice(1, this)">📋 Notice (Bài 2)</button>
+    <button class="practice-tab" onclick="loadPractice(2, this)">📰 Article (Bài 3)</button>
+  </div>
+
+  <!-- Timer -->
+  <div class="timer-bar">
+    <div>
+      <div class="timer-display" id="timerDisplay">00:00</div>
+      <div class="timer-label">Thời gian làm bài</div>
+    </div>
+    <button class="timer-btn start" id="timerBtn" onclick="toggleTimer()">▶ Bắt đầu</button>
+    <button class="timer-btn reset" onclick="resetTimer()">↺ Reset</button>
+  </div>
+
+  <!-- Score -->
+  <div class="score-panel">
+    <div class="score-item correct"><div class="num" id="scoreCorrect">0</div><div class="label">Đúng</div></div>
+    <div class="score-item wrong"><div class="num" id="scoreWrong">0</div><div class="label">Sai</div></div>
+    <div class="score-item total"><div class="num" id="scoreTotal">0/0</div><div class="label">Hoàn thành</div></div>
+    <div class="score-item time"><div class="num" id="scoreAvg">--</div><div class="label">TB/câu</div></div>
+  </div>
+
+  <!-- Progress -->
+  <div class="progress-dots" id="progressDots"></div>
+
+  <!-- Practice Content -->
+  <div id="practiceContent" class="practice-container"></div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <p><span class="brand">ORI ACADEMY</span> — Có TOEIC, Có Việc Làm Cùng ORI</p>
+  <p style="margin-top:4px;">135 Bạch Đằng, Tân Bình, TP.HCM</p>
+  <p style="margin-top:4px;">Có học online (qua Zoom) hoặc trực tiếp tại ORI</p>
+</footer>
+
+<script>
+// ========= NAVIGATION =========
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function toggleTypeDetail(el) {
+  const detail = el.querySelector('.type-detail');
+  detail.style.display = detail.style.display === 'none' ? 'block' : 'none';
+}
+
+// ========= TIMER =========
+let timerInterval = null, timerSeconds = 0, timerRunning = false;
+function toggleTimer() {
+  const btn = document.getElementById('timerBtn');
+  if (timerRunning) {
+    clearInterval(timerInterval);
+    btn.textContent = '▶ Tiếp tục';
+    timerRunning = false;
+  } else {
+    timerInterval = setInterval(() => {
+      timerSeconds++;
+      updateTimerDisplay();
+    }, 1000);
+    btn.textContent = '⏸ Tạm dừng';
+    timerRunning = true;
+  }
+}
+function resetTimer() {
+  clearInterval(timerInterval);
+  timerSeconds = 0;
+  timerRunning = false;
+  updateTimerDisplay();
+  document.getElementById('timerBtn').textContent = '▶ Bắt đầu';
+}
+function updateTimerDisplay() {
+  const m = Math.floor(timerSeconds/60).toString().padStart(2,'0');
+  const s = (timerSeconds%60).toString().padStart(2,'0');
+  document.getElementById('timerDisplay').textContent = `${m}:${s}`;
+}
+
+// ========= PRACTICE DATA =========
+const practiceData = [
+  {
+    title: "Email – Business Inquiry",
+    type: "email",
+    passage: `<strong>To:</strong> customerservice@grandviewhotel.com<br>
+<strong>From:</strong> sarah.chen@techcorp.net<br>
+<strong>Date:</strong> March 15<br>
+<strong>Subject:</strong> Conference Room Booking<br><br>
+Dear Grand View Hotel,<br><br>
+I am writing to <span class="highlight-word" title="Từ khoá quan trọng!">inquire</span> about booking your conference facilities for our company's annual meeting on <span class="highlight-word" title="Ngày tháng cụ thể!">April 22-23</span>. We expect approximately <span class="highlight-word" title="Số liệu cụ thể!">85 attendees</span>.<br><br>
+We would need a large meeting room with a projector, microphone system, and <span class="highlight-word" title="Yêu cầu cụ thể!">high-speed Wi-Fi</span>. Additionally, we would like to arrange <span class="highlight-word" title="Dịch vụ thêm!">catering services</span> for both lunch and afternoon refreshments on both days.<br><br>
+Could you also provide information about <span class="highlight-word" title="Yêu cầu thêm!">group accommodation rates</span> for our out-of-town employees? We anticipate needing about <span class="highlight-word" title="Số liệu!">30 rooms</span> for two nights.<br><br>
+Please send me a detailed <span class="highlight-word" title="Mục đích chính!">quotation</span> at your earliest convenience.<br><br>
+Best regards,<br>Sarah Chen<br>Event Coordinator, TechCorp`,
+    questions: [
+      {
+        text: "What is the purpose of this email?",
+        badge: "tq", badgeText: "TỔNG QUÁT",
+        answerType: "Dạng 3 – Diễn tả khác",
+        choices: [
+          "(A) To cancel a reservation",
+          "(B) To request pricing for event facilities and lodging",
+          "(C) To complain about hotel service",
+          "(D) To confirm a booking"
+        ],
+        correct: 1,
+        explain: "<strong>Phân tích ORI:</strong> Câu hỏi dạng TỔNG QUÁT (What is the purpose). Scan bài → Sarah viết để 'inquire' về booking + xin 'quotation'. Đáp án (B) diễn tả lại bằng cách khác: 'request pricing for event facilities and lodging' = xin báo giá cho phòng họp + phòng ở. Đây là <strong>Dạng 3: Diễn tả theo cách khác</strong>."
+      },
+      {
+        text: "How many rooms does Ms. Chen need?",
+        badge: "ct", badgeText: "CHI TIẾT",
+        answerType: "Dạng 1 – Y hệt",
+        choices: [
+          "(A) 22 rooms",
+          "(B) 85 rooms",
+          "(C) 30 rooms",
+          "(D) 15 rooms"
+        ],
+        correct: 2,
+        explain: "<strong>Phân tích ORI:</strong> Câu hỏi dạng CHI TIẾT (How many rooms). Tìm từ khoá 'rooms' trong bài → 'needing about 30 rooms'. Đáp án (C) dùng <strong>Dạng 1: Y hệt</strong> — con số 30 rooms giống hệt trong bài. Chú ý: 85 là số attendees (bẫy!), 22 là ngày (bẫy!)."
+      },
+      {
+        text: "What is NOT mentioned as a requirement for the meeting room?",
+        badge: "db", badgeText: "ĐẶC BIỆT",
+        answerType: "Dạng 4 – Loại suy",
+        choices: [
+          "(A) A projector",
+          "(B) A sound system",
+          "(C) Internet access",
+          "(D) Video recording equipment"
+        ],
+        correct: 3,
+        explain: "<strong>Phân tích ORI:</strong> Câu hỏi dạng ĐẶC BIỆT (NOT mentioned). Đây là <strong>Dạng 4: Loại suy</strong>. Scan từng đáp án vào bài:<br>✓ (A) projector → có nhắc ✓<br>✓ (B) sound system → 'microphone system' = đồng nghĩa ✓<br>✓ (C) Internet → 'high-speed Wi-Fi' = đồng nghĩa ✓<br>✗ (D) Video recording → KHÔNG có nhắc → Đáp án đúng!"
+      }
+    ]
+  },
+  {
+    title: "Notice – Office Announcement",
+    type: "notice",
+    passage: `<div style="text-align:center;margin-bottom:16px;"><strong style="font-size:1.05rem;">GREENFIELD INDUSTRIES</strong><br><em>Employee Notice</em></div>
+<strong>Attention All Staff:</strong><br><br>
+Due to the upcoming <span class="highlight-word" title="Lý do!">building renovation</span>, several changes will take effect starting <span class="highlight-word" title="Thời gian!">Monday, June 3</span>.<br><br>
+The <span class="highlight-word" title="Khu vực ảnh hưởng!">third-floor offices</span> will be temporarily closed for approximately <span class="highlight-word" title="Thời gian!">six weeks</span>. Employees currently working on the third floor will be <span class="highlight-word" title="Giải pháp!">relocated to the second floor</span>, where temporary workstations have been set up.<br><br>
+During the renovation period, the <span class="highlight-word" title="Thay đổi!">main elevator</span> will be <span class="highlight-word" title="Từ khoá!">out of service</span>. Please use the <span class="highlight-word" title="Giải pháp!">stairs or the service elevator</span> located at the east end of the building.<br><br>
+The employee <span class="highlight-word" title="Khu vực!">parking garage on Level B1</span> will remain open; however, <span class="highlight-word" title="Thay đổi!">Levels B2 and B3</span> will be closed for equipment storage.<br><br>
+We appreciate your patience during this period. For questions, contact the <span class="highlight-word" title="Liên hệ!">Facilities Department at ext. 4500</span>.`,
+    questions: [
+      {
+        text: "What is the notice mainly about?",
+        badge: "tq", badgeText: "TỔNG QUÁT",
+        answerType: "Dạng 2 – Từ đồng nghĩa",
+        choices: [
+          "(A) A company relocation",
+          "(B) Changes due to construction work",
+          "(C) New parking regulations",
+          "(D) An office closure"
+        ],
+        correct: 1,
+        explain: "<strong>Phân tích ORI:</strong> Câu hỏi TỔNG QUÁT (mainly about). Scan bài → từ khoá chính: 'building renovation' gây ra nhiều thay đổi. Đáp án (B) 'construction work' = <strong>Dạng 2: Từ đồng nghĩa</strong> của 'renovation'."
+      },
+      {
+        text: "Where will third-floor employees work during the renovation?",
+        badge: "ct", badgeText: "CHI TIẾT",
+        answerType: "Dạng 1 – Y hệt",
+        choices: [
+          "(A) On the first floor",
+          "(B) On the second floor",
+          "(C) At home",
+          "(D) In the parking garage"
+        ],
+        correct: 1,
+        explain: "<strong>Phân tích ORI:</strong> Câu hỏi CHI TIẾT (Where). Tìm từ khoá 'third-floor employees' → 'relocated to the second floor'. Đáp án (B) <strong>Dạng 1: Y hệt</strong> — 'second floor' giống hệt bài."
+      },
+      {
+        text: "What is suggested about the parking garage?",
+        badge: "db", badgeText: "ĐẶC BIỆT",
+        answerType: "Dạng 3 – Diễn tả khác",
+        choices: [
+          "(A) It will be completely closed",
+          "(B) Only some levels will be available",
+          "(C) Parking fees will increase",
+          "(D) A new garage will be built"
+        ],
+        correct: 1,
+        explain: "<strong>Phân tích ORI:</strong> Câu hỏi ĐẶC BIỆT (suggested). Tìm 'parking garage' → B1 remain open, B2 & B3 closed. Đáp án (B) 'Only some levels will be available' = <strong>Dạng 3: Diễn tả khác</strong> — diễn tả cùng ý bằng cách nói khác."
+      },
+      {
+        text: "How long is the third floor expected to be closed?",
+        badge: "ct", badgeText: "CHI TIẾT",
+        answerType: "Dạng 2 – Từ đồng nghĩa",
+        choices: [
+          "(A) Three weeks",
+          "(B) One month",
+          "(C) About a month and a half",
+          "(D) Two months"
+        ],
+        correct: 2,
+        explain: "<strong>Phân tích ORI:</strong> Câu hỏi CHI TIẾT (How long). Tìm 'third floor' + 'closed' → 'approximately six weeks'. Đáp án (C) 'About a month and a half' = <strong>Dạng 3: Diễn tả khác</strong> — 6 weeks được diễn tả thành 'a month and a half'. Bẫy: không có đáp án 'six weeks' y hệt!"
+      }
+    ]
+  },
+  {
+    title: "Article – Business News",
+    type: "article",
+    passage: `<div style="text-align:center;margin-bottom:16px;"><strong style="font-size:1.05rem;">BUSINESS DAILY NEWS</strong></div>
+<strong>NovaTech Expands Into Asian Markets</strong><br><br>
+<span class="highlight-word" title="Công ty!">NovaTech Solutions</span>, a leading software development firm based in <span class="highlight-word" title="Trụ sở!">Toronto, Canada</span>, announced yesterday its plans to open <span class="highlight-word" title="Mở rộng!">three new offices</span> across Asia within the next <span class="highlight-word" title="Thời gian!">18 months</span>.<br><br>
+The company, which <span class="highlight-word" title="Chuyên môn!">specializes in cloud computing solutions</span>, has seen its <span class="highlight-word" title="Kết quả!">revenue increase by 40%</span> over the past two years, largely driven by growing demand from <span class="highlight-word" title="Đối tượng!">international clients</span>.<br><br>
+"We have been <span class="highlight-word" title="Nhu cầu!">receiving more requests</span> from businesses in Asia than we can handle from our current locations," said CEO <span class="highlight-word" title="Nhân vật!">David Park</span>. "Opening regional offices will allow us to provide <span class="highlight-word" title="Mục đích!">faster and more localized support</span>."<br><br>
+The first office will open in <span class="highlight-word" title="Địa điểm 1!">Singapore</span> in September, followed by offices in <span class="highlight-word" title="Địa điểm 2!">Seoul</span> and <span class="highlight-word" title="Địa điểm 3!">Tokyo</span>. NovaTech plans to hire approximately <span class="highlight-word" title="Tuyển dụng!">200 employees</span> across all three locations.<br><br>
+Industry analysts have praised the move, noting that NovaTech's <span class="highlight-word" title="Lợi thế!">competitive pricing</span> and <span class="highlight-word" title="Lợi thế!">strong customer service reputation</span> should give it an advantage in the Asian market.`,
+    questions: [
+      {
+        text: "What does NovaTech Solutions primarily do?",
+        badge: "tq", badgeText: "TỔNG QUÁT",
+        answerType: "Dạng 2 – Từ đồng nghĩa",
+        choices: [
+          "(A) It manufactures computer hardware",
+          "(B) It develops technology for online data storage",
+          "(C) It provides office relocation services",
+          "(D) It trains IT professionals"
+        ],
+        correct: 1,
+        explain: "<strong>Phân tích ORI:</strong> Câu hỏi TỔNG QUÁT (primarily do). Scan → 'software development firm' + 'specializes in cloud computing solutions'. Đáp án (B) 'technology for online data storage' = <strong>Dạng 3: Diễn tả khác</strong> — 'cloud computing' được diễn tả thành 'online data storage'."
+      },
+      {
+        text: "According to Mr. Park, why is NovaTech opening offices in Asia?",
+        badge: "ct", badgeText: "CHI TIẾT",
+        answerType: "Dạng 3 – Diễn tả khác",
+        choices: [
+          "(A) To reduce operational costs",
+          "(B) To meet increasing demand from the region",
+          "(C) To compete with local companies",
+          "(D) To recruit Asian software engineers"
+        ],
+        correct: 1,
+        explain: "<strong>Phân tích ORI:</strong> Câu hỏi CHI TIẾT (why). Tìm David Park nói gì → 'receiving more requests from businesses in Asia'. Đáp án (B) 'meet increasing demand' = <strong>Dạng 3: Diễn tả khác</strong> — 'more requests' diễn tả lại thành 'increasing demand'."
+      },
+      {
+        text: "What is indicated about NovaTech's financial performance?",
+        badge: "db", badgeText: "ĐẶC BIỆT",
+        answerType: "Dạng 3 – Diễn tả khác",
+        choices: [
+          "(A) It has been losing money recently",
+          "(B) Its profits have grown significantly",
+          "(C) It has maintained stable revenue",
+          "(D) It reported a loss last quarter"
+        ],
+        correct: 1,
+        explain: "<strong>Phân tích ORI:</strong> Câu hỏi ĐẶC BIỆT (indicated). Tìm thông tin tài chính → 'revenue increase by 40%'. Đáp án (B) 'profits have grown significantly' = <strong>Dạng 3: Diễn tả khác</strong> — 40% increase diễn tả thành 'grown significantly'."
+      },
+      {
+        text: "Which city will get a NovaTech office first?",
+        badge: "ct", badgeText: "CHI TIẾT",
+        answerType: "Dạng 1 – Y hệt",
+        choices: [
+          "(A) Toronto",
+          "(B) Seoul",
+          "(C) Singapore",
+          "(D) Tokyo"
+        ],
+        correct: 2,
+        explain: "<strong>Phân tích ORI:</strong> Câu hỏi CHI TIẾT (Which city first). Tìm thứ tự → 'The first office will open in Singapore in September'. Đáp án (C) <strong>Dạng 1: Y hệt</strong>. Bẫy: Toronto là trụ sở (không phải mở mới), Seoul/Tokyo mở sau!"
+      }
+    ]
+  }
+];
+
+// ========= PRACTICE ENGINE =========
+let currentPractice = 0;
+let answered = 0, correct = 0, wrong = 0;
+let questionStartTimes = [];
+
+function loadPractice(index, btn) {
+  currentPractice = index;
+  answered = 0; correct = 0; wrong = 0;
+  document.getElementById('scoreCorrect').textContent = '0';
+  document.getElementById('scoreWrong').textContent = '0';
+  document.getElementById('scoreTotal').textContent = '0/0';
+  document.getElementById('scoreAvg').textContent = '--';
+  resetTimer();
+
+  document.querySelectorAll('.practice-tab').forEach(t => t.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+
+  const data = practiceData[index];
+  const totalQ = data.questions.length;
+
+  // Progress dots
+  let dotsHtml = '';
+  for(let i=0;i<totalQ;i++) dotsHtml += `<div class="dot" id="dot-${i}"></div>`;
+  document.getElementById('progressDots').innerHTML = dotsHtml;
+  if(totalQ > 0) document.getElementById('dot-0').classList.add('current');
+
+  // Build content
+  let html = `
+    <div class="passage-box">
+      <div class="label">${data.type.toUpperCase()} – ${data.title}</div>
+      <div class="passage-text">${data.passage}</div>
+    </div>
+  `;
+
+  data.questions.forEach((q, qi) => {
+    html += `
+      <div class="question-card" id="qcard-${qi}">
+        <span class="q-badge ${q.badge}">${q.badgeText}</span>
+        <span class="q-badge" style="background:rgba(139,92,246,0.12);color:var(--ori-purple);margin-left:6px;">${q.answerType}</span>
+        <div class="q-number">${qi+1}. ${q.text}</div>
+        <div class="choices">
+    `;
+    q.choices.forEach((c, ci) => {
+      const letter = String.fromCharCode(65+ci);
+      html += `
+        <button class="choice-btn" onclick="checkAnswer(${qi},${ci})" id="choice-${qi}-${ci}">
+          <span class="letter">${letter}</span>
+          <span>${c.substring(4)}</span>
+        </button>
+      `;
+    });
+    html += `
+        </div>
+        <div class="explain-box" id="explain-${qi}">${q.explain}</div>
+      </div>
+    `;
+  });
+
+  document.getElementById('practiceContent').innerHTML = html;
+  questionStartTimes = new Array(totalQ).fill(null);
+  
+  // Auto-start timer
+  if(!timerRunning) toggleTimer();
+}
+
+function checkAnswer(qi, ci) {
+  const data = practiceData[currentPractice];
+  const q = data.questions[qi];
+  const totalQ = data.questions.length;
+  const isCorrect = ci === q.correct;
+
+  // Disable all choices for this question
+  q.choices.forEach((_, i) => {
+    const btn = document.getElementById(`choice-${qi}-${i}`);
+    btn.classList.add('disabled');
+    if(i === q.correct) btn.classList.add('correct');
+    if(i === ci && !isCorrect) btn.classList.add('wrong');
+  });
+
+  // Update card
+  const card = document.getElementById(`qcard-${qi}`);
+  card.classList.add(isCorrect ? 'answered-correct' : 'answered-wrong');
+
+  // Show explanation
+  document.getElementById(`explain-${qi}`).classList.add('show');
+
+  // Update score
+  answered++;
+  if(isCorrect) correct++; else wrong++;
+  document.getElementById('scoreCorrect').textContent = correct;
+  document.getElementById('scoreWrong').textContent = wrong;
+  document.getElementById('scoreTotal').textContent = `${answered}/${totalQ}`;
+
+  // Avg time
+  if(answered > 0) {
+    const avg = Math.round(timerSeconds / answered);
+    document.getElementById('scoreAvg').textContent = `${avg}s`;
+  }
+
+  // Update progress dots
+  const dot = document.getElementById(`dot-${qi}`);
+  dot.classList.remove('current');
+  dot.classList.add(isCorrect ? 'done-correct' : 'done-wrong');
+  if(qi+1 < totalQ) {
+    document.getElementById(`dot-${qi+1}`).classList.add('current');
+  }
+
+  // Scroll to next question
+  if(qi+1 < totalQ) {
+    setTimeout(() => {
+      document.getElementById(`qcard-${qi+1}`).scrollIntoView({behavior:'smooth', block:'center'});
+    }, 800);
+  }
+
+  // All done?
+  if(answered === totalQ) {
+    if(timerRunning) toggleTimer();
+    setTimeout(() => showResult(), 1000);
+  }
+}
+
+function showResult() {
+  const totalQ = practiceData[currentPractice].questions.length;
+  const pct = Math.round((correct/totalQ)*100);
+  let msg = '', color = '';
+  if(pct >= 80) { msg = '🎉 Xuất sắc! Bạn đã nắm vững chiến thuật ORI!'; color = 'var(--ori-emerald)'; }
+  else if(pct >= 60) { msg = '👍 Khá tốt! Cần luyện thêm dạng Loại suy và Diễn tả khác.'; color = 'var(--ori-amber)'; }
+  else { msg = '💪 Cần ôn lại! Hãy xem lại phần Chiến Thuật và 4 Dạng Đáp Án.'; color = 'var(--ori-rose)'; }
+
+  const html = `
+    <div class="card" style="text-align:center;border-color:${color};margin-top:24px;">
+      <h3 style="font-size:1.4rem;color:${color};">${pct}% — ${correct}/${totalQ} câu đúng</h3>
+      <p style="margin-top:8px;font-size:0.95rem;">${msg}</p>
+      <p style="margin-top:6px;color:var(--ori-gray);font-size:0.85rem;">Thời gian: ${document.getElementById('timerDisplay').textContent} | Trung bình: ${document.getElementById('scoreAvg').textContent}/câu</p>
+      <button onclick="loadPractice(currentPractice, document.querySelector('.practice-tab.active'))" style="margin-top:16px;padding:10px 28px;border-radius:10px;border:none;background:var(--ori-blue);color:#fff;font-family:inherit;font-weight:600;cursor:pointer;font-size:0.9rem;">🔄 Làm lại</button>
+    </div>
+  `;
+  document.getElementById('practiceContent').insertAdjacentHTML('beforeend', html);
+}
+
+// ========= INIT =========
+document.addEventListener('DOMContentLoaded', () => {
+  loadPractice(0, document.querySelector('.practice-tab'));
+});
+</script>
+</body>
+</html>
